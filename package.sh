@@ -162,7 +162,7 @@ package_release(){
 	fi
 
 	package_version=${version}-${build_number}
-	package_file=${product}_${version}_${package_arch}.${pkg_type}
+	package_file=${product}_${package_version}_${package_arch}.${pkg_type}
 
 	rm -f ${package_file}
 
