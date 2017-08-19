@@ -1,6 +1,6 @@
 
 PACKAGE_PRODUCT=nomad
-PACKAGE_VERSION=0.5.6
+PACKAGE_VERSION=0.6.0
 ARCH="386 amd64 arm"
 
 default: package bintray
