@@ -8,25 +8,29 @@ addons:
     - rpm
 language: ruby
 rvm:
-- 2.1.5
+- 2.4.1
 env:
 - PACKAGE_TARGET=deb
 - PACKAGE_TARGET=rpm
-install: bundle install
+install:
+-  gem install bundler
+-  bundle install
 script:
 - make
 deploy:
   - provider: bintray
+    skip_cleanup: true
     file: ".bintray/deb.json"
     user: patdowney
     key:
-      secure: IDZ/YJJoVWjfUbUm6jFvtj2CeDaoRRMKKVGq60PhQit1VZry5Le5uoAd+HhruK3ks448ruVba0yakGUmFAf9fuPBjxfubm2+R0ASWw2RHtedaKmyRjgBs1vA07RTApcgIaIteWw234mxeTDpMUkn+3EVx4sS+7iYtzdkbSkdfw2vvOQg1c8tADPzAvCzNRpfMB+RI5dnQvCNNYhFCmyFq5sKxkLfyRrMtL9Emkd5/0VrcBp6LRSsCFdvtZ7Apyd1UcWa/6bzYbKO7Hem/pCIMxmw/lL2zuWBvGTNGzhF1oOrIFKoaKghhufZhRVSC9joaik/AUu+nHnOEc/8g+thN0Ob8xp5dSpM2W1lN8Dm2bFZ1eglBTUsU/1BOfYHQmmH4KJhWz6054CfWwxPbN59nZKbHsdJ/HA9Tfd+WCSvxqoIW5CACUjBgHIBTcfENuffNJ8BV175MlTugfL0absc7d9+FjlORr6Q7jbcDoG587hyrKkyHezDuX2DTAxXrEIiPznM9pqQLoTXofL58ue4bypMHCv+QTiIiOI0vLsNprHPVGMc33q9DiRy+iNjyzKUYsEUdjOcaRgDuzTkqdAG70+rphbjbpmkfWMt/qBvCNRnLag43wKh98Fia4J6jsSvo+l1LgvspIuw4FatXL/CtnfHpJZh2zRPsPRwTWQPHnQ=
+      secure: UmC/27dVSLoMxWRv8iniOQXvyBQzJ/rWuGHsOOi3559ZjNly5AyNJ8633xbKzCZQpHqbgNKtKYjwiWhdFjY1j3I21rnc2FKPhHdlN+Hy+H6enZAkqTl5q8oNrjNF6vPPNCLKH8Xc+dJg8ste/wL2s5EUn10dshbdnYtWKpNAucv4Le7lCkCaFSkBB4d/wqjkV8bL4XXvQQFQBTaKho/mDaBZJAfFnOIVzV8mLqpPerK0Ptu1nVREpikgMXMzGaDiF6+7tzgF2sfMyqJqXJDswAcLh0MHXOn9y/pArFRqVk37PGun/RV/EGHNga5LgJM+Xjyi2qgIZPxfupwqdb51QcYjxAKDU5q/b+mNgzL4uA0BKihIZj51TMLuJ/xfnWEiNf751ylpVMDDdXcLPRBI8TG3yYE8v83SRp9bV97iw5MKYNEYX23B1cuk0WG/Fwgzptaw4990QJrzDUe9g6wVLMdikw8Ftlxg6IR4GacUMHmChi9F7C8CH6B/7y+gKVmtN9hkXL9fx0sLvLqgdLgFL274UzbvvySwyYGs/IH+21mXYkrbR6coL/SfPyoFoSRjovPSEbjf9blv0wJLs2c4wjgj2gVa4SnGnwkJ1S6G2pMffLRjC3XNBTX5LsV0MD1BOLUknkl/DlhpdAi+D3UxUKm7kdJQTq73JEdlsKxkwlE=
     on:
       condition: "$PACKAGE_TARGET = deb"
   - provider: bintray
+    skip_cleanup: true
     file: ".bintray/rpm.json"
     user: patdowney
     key:
-      secure: IDZ/YJJoVWjfUbUm6jFvtj2CeDaoRRMKKVGq60PhQit1VZry5Le5uoAd+HhruK3ks448ruVba0yakGUmFAf9fuPBjxfubm2+R0ASWw2RHtedaKmyRjgBs1vA07RTApcgIaIteWw234mxeTDpMUkn+3EVx4sS+7iYtzdkbSkdfw2vvOQg1c8tADPzAvCzNRpfMB+RI5dnQvCNNYhFCmyFq5sKxkLfyRrMtL9Emkd5/0VrcBp6LRSsCFdvtZ7Apyd1UcWa/6bzYbKO7Hem/pCIMxmw/lL2zuWBvGTNGzhF1oOrIFKoaKghhufZhRVSC9joaik/AUu+nHnOEc/8g+thN0Ob8xp5dSpM2W1lN8Dm2bFZ1eglBTUsU/1BOfYHQmmH4KJhWz6054CfWwxPbN59nZKbHsdJ/HA9Tfd+WCSvxqoIW5CACUjBgHIBTcfENuffNJ8BV175MlTugfL0absc7d9+FjlORr6Q7jbcDoG587hyrKkyHezDuX2DTAxXrEIiPznM9pqQLoTXofL58ue4bypMHCv+QTiIiOI0vLsNprHPVGMc33q9DiRy+iNjyzKUYsEUdjOcaRgDuzTkqdAG70+rphbjbpmkfWMt/qBvCNRnLag43wKh98Fia4J6jsSvo+l1LgvspIuw4FatXL/CtnfHpJZh2zRPsPRwTWQPHnQ=
+      secure: UmC/27dVSLoMxWRv8iniOQXvyBQzJ/rWuGHsOOi3559ZjNly5AyNJ8633xbKzCZQpHqbgNKtKYjwiWhdFjY1j3I21rnc2FKPhHdlN+Hy+H6enZAkqTl5q8oNrjNF6vPPNCLKH8Xc+dJg8ste/wL2s5EUn10dshbdnYtWKpNAucv4Le7lCkCaFSkBB4d/wqjkV8bL4XXvQQFQBTaKho/mDaBZJAfFnOIVzV8mLqpPerK0Ptu1nVREpikgMXMzGaDiF6+7tzgF2sfMyqJqXJDswAcLh0MHXOn9y/pArFRqVk37PGun/RV/EGHNga5LgJM+Xjyi2qgIZPxfupwqdb51QcYjxAKDU5q/b+mNgzL4uA0BKihIZj51TMLuJ/xfnWEiNf751ylpVMDDdXcLPRBI8TG3yYE8v83SRp9bV97iw5MKYNEYX23B1cuk0WG/Fwgzptaw4990QJrzDUe9g6wVLMdikw8Ftlxg6IR4GacUMHmChi9F7C8CH6B/7y+gKVmtN9hkXL9fx0sLvLqgdLgFL274UzbvvySwyYGs/IH+21mXYkrbR6coL/SfPyoFoSRjovPSEbjf9blv0wJLs2c4wjgj2gVa4SnGnwkJ1S6G2pMffLRjC3XNBTX5LsV0MD1BOLUknkl/DlhpdAi+D3UxUKm7kdJQTq73JEdlsKxkwlE=
     on:
       condition: "$PACKAGE_TARGET = rpm"
